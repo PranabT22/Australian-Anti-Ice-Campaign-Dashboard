@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AAIC Forms</title>
+  <meta name="description" content="AAIC Forms - Leave, Well-being, and Volunteer Registration">
+  <meta name="author" content="Gregry Pike">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* CSS Reset and Base Styles */
+    html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      font: inherit;
+      vertical-align: baseline;
+    }
+
+    article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+      display: block;
+    }
+
+    body {
+      line-height: 1;
+      background: #4B83C0;
+      font-family: 'Arial', sans-serif;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    ol, ul {
+      list-style: none;
+    }
+
+    blockquote, q {
+      quotes: none;
+    }
+
+    blockquote:before, blockquote:after, q:before, q:after {
+      content: '';
+      content: none;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    /* Custom Styles */
+    body {
+      -webkit-text-size-adjust: none;
+      line-height: 1.75;
+      font-size: 16.5pt;
+    }
+
+    @media screen and (max-width: 1680px) {
+      body {
+        font-size: 13pt;
+      }
+    }
+
+    @media screen and (max-width: 1280px) {
+      body {
+        font-size: 12pt;
+      }
+    }
+
+    @media screen and (max-width: 360px) {
+      body {
+        font-size: 11pt;
+      }
+    }
+
+    a {
+      transition: color 0.2s ease, border-bottom-color 0.2s ease;
+      border-bottom: dotted 1px rgba(255, 255, 255, 0.35);
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      border-bottom-color: transparent;
+      color: #ffffff;
+    }
+
+    strong, b {
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    /* Header Styles */
+    #header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #5899E0;
+      padding: 1.2em 2em;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.5em;
+    }
+
+    nav a {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.8em;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-bottom: none;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover, nav a.active {
+      color: #ffffff;
+    }
+
+    .header-buttons {
+      display: flex;
+      gap: 1em;
+    }
+
+    /* Button Styles */
+    .button {
+      appearance: none;
+      transition: border-color 0.2s ease;
+      background-color: transparent;
+      border: solid 1px rgba(255, 255, 255, 0.15) !important;
+      border-radius: 3em;
+      color: #ffffff !important;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 0.7em;
+      font-weight: bold;
+      height: 3.5em;
+      letter-spacing: 0.1em;
+      line-height: 3.5em;
+      outline: 0;
+      padding: 0 2em;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .button:after {
+      transform: scale(0.25);
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      background: #ffffff;
+      border-radius: 3em;
+      content: '';
+      height: 100%;
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    .button.primary {
+      background-color: #ffffff;
+      color: #4B83C0 !important;
+    }
+
+    .button.primary:after {
+      display: none;
+    }
+
+    .button:hover {
+      border-color: rgba(255, 255, 255, 0.55) !important;
+    }
+
+    .button:hover:after {
+      opacity: 0.05;
+      transform: scale(1);
+    }
+
+    /* Forms Section Styles */
+    #general-policies {
+      padding: 5em 2em;
+      background-color: #3862E0;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    #general-policies h3 {
+      font-size: 2.5em;
+      color: #ffffff;
+      margin-bottom: 0.5em;
+      text-align: center;
+      position: relative;
+      padding-bottom: 0.5em;
+      font-weight: bold;
+    }
+
+    #general-policies h3:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(to right, rgb(254, 255, 255));
+      border-radius: 2px;
+    }
+
+    #general-policies p {
+      font-size: 1.2em;
+      color: rgba(255, 255, 255, 0.8);
+      margin: 1.5em 0 0.5em;
+      text-align: center;
+    }
+
+    #general-policies > div {
+      text-align: center;
+      margin-bottom: 1.5em;
+    }
+
+    .Training9 {
+      appearance: none;
+      transition: all 0.3s ease;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: solid 1px rgba(255, 255, 255, 0.2);
+      border-radius: 3em;
+      color: #ffffff;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 0.9em;
+      font-weight: bold;
+      padding: 0.8em 1.5em;
+      text-align: center;
+      text-decoration: none;
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .Training9:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #070707dd;
+      padding: 3em 2em;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .copyright {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9em;
+      margin-top: 2em;
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 980px) {
+      #general-policies h3 {
+        font-size: 2em;
+      }
+      
+      nav ul {
+        gap: 1em;
+      }
+    }
+
+    @media screen and (max-width: 736px) {
+      #header {
+        flex-direction: column;
+        padding: 1em;
+      }
+      
+      nav {
+        margin: 1em 0;
+      }
+      
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .header-buttons {
+        margin-top: 1em;
+      }
+      
+      #general-policies {
+        padding: 3em 1em;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .button {
+        padding: 0 1.5em;
+        font-size: 0.6em;
+      }
+      
+      .Training9 {
+        padding: 0.7em 1.2em;
+        font-size: 0.8em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="logo">AAIC</div>
+    <nav>
+      <ul>
+        <li><a href="https://script.google.com/macros/s/AKfycbw-1c5qyR-BcmYqdZUzVy95mDj3_VcswNBVDQsxpoDkQH_HOR52X2O0RsiQeLSdAenGuQ/exec">Clocking</a></li>
+        <li><a href="forms.html" class="active">Forms</a></li>
+        <li><a href="resources.html">Induction</a></li>
+        <li><a href="pandp.html">Policy and Procedures</a></li>
+        <li><a href="messageboard.html">Message Board</a></li>
+        <li><a href="elearning.html">e-Learning</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="https://australianantiicecampaign.org.au/about-us/about-aaic.html">About Us</a></li>
+      </ul>
+    </nav>
+    <div class="header-buttons">
+      <a href="login.html" class="button">Login</a>
+      <a href="inbox.html" class="button primary">Inbox</a>
+    </div>
+  </header>
+
+  <section id="general-policies">
+    <h3>AAIC Forms</h3>
+    <p>Leave Form</p>
+    <div>
+      <button class="Training9" onclick="window.open('https://forms.monday.com/forms/b2b34acef96dc93f678b99746532fc80?r=use1', '_blank')">
+        Access the Leave Form
+      </button>
+    </div>
+
+    <p>Well-being survey Form</p>
+    <div>
+      <button class="Training9" onclick="window.open('https://forms.monday.com/forms/b2b34acef96dc93f678b99746532fc80?r=use1', '_blank')">
+        Access the Well-being survey Form
+      </button>
+    </div>
+
+    <p>Short Volunteer Registration form</p>
+    <div>
+      <button class="Training9" onclick="window.open('https://forms.monday.com/forms/061611b4344219ec01a65b4ca7d7c1a9?r=use1', '_blank')">
+        Access the Short Volunteer Registration form
+      </button>
+    </div>
+
+    <p>Long Volunteer Registration form</p>
+    <div>
+      <button class="Training9" onclick="window.open('https://forms.monday.com/forms/6d8286c051d6dfbf0c2a5cb0def86aed?r=use1', '_blank')">
+        Access the Long Volunteer Registration form
+      </button>
+    </div>
+
+    <p>Volunteer Registration form</p>
+    <div>
+      <button class="Training9" onclick="window.open('https://forms.monday.com/forms/6d8286c051d6dfbf0c2a5cb0def86aed?r=use1', '_blank')">
+        Access the Volunteer Registration form
+      </button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="logo">AAIC</div>
+      <p>Your all-in-one workplace solution</p>
+      <div class="copyright">
+        &copy; 2023 AAIC. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple script to handle navigation active state
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('nav a');
+      
+      navLinks.forEach(link => {
+        if (link.href === window.location.href) {
+          link.classList.add('active');
+        }
+        
+        link.addEventListener('click', function() {
+          navLinks.forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

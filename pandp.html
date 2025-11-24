@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Policy And Procedures</title>
+  <meta name="description" content="Collaborate with your team">
+  <meta name="author" content="Gregry Pike">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* CSS Reset and Base Styles */
+    html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      font: inherit;
+      vertical-align: baseline;
+    }
+
+    article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+      display: block;
+    }
+
+    body {
+      line-height: 1;
+      background: #4B83C0;
+      font-family: 'Arial', sans-serif;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    ol, ul {
+      list-style: none;
+    }
+
+    blockquote, q {
+      quotes: none;
+    }
+
+    blockquote:before, blockquote:after, q:before, q:after {
+      content: '';
+      content: none;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    /* Custom Styles */
+    body {
+      -webkit-text-size-adjust: none;
+      line-height: 1.75;
+      font-size: 16.5pt;
+    }
+
+    @media screen and (max-width: 1680px) {
+      body {
+        font-size: 13pt;
+      }
+    }
+
+    @media screen and (max-width: 1280px) {
+      body {
+        font-size: 12pt;
+      }
+    }
+
+    @media screen and (max-width: 360px) {
+      body {
+        font-size: 11pt;
+      }
+    }
+
+    a {
+      transition: color 0.2s ease, border-bottom-color 0.2s ease;
+      border-bottom: dotted 1px rgba(255, 255, 255, 0.35);
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      border-bottom-color: transparent;
+      color: #ffffff;
+    }
+
+    strong, b {
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    /* Header Styles */
+    #header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #5899E0;
+      padding: 1.2em 2em;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.5em;
+    }
+
+    nav a {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.8em;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-bottom: none;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover, nav a.active {
+      color: #ffffff;
+    }
+
+    .header-buttons {
+      display: flex;
+      gap: 1em;
+    }
+
+    /* Button Styles */
+    .button {
+      appearance: none;
+      transition: border-color 0.2s ease;
+      background-color: transparent;
+      border: solid 1px rgba(255, 255, 255, 0.15) !important;
+      border-radius: 3em;
+      color: #ffffff !important;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 0.7em;
+      font-weight: bold;
+      height: 3.5em;
+      letter-spacing: 0.1em;
+      line-height: 3.5em;
+      outline: 0;
+      padding: 0 2em;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .button:after {
+      transform: scale(0.25);
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      background: #ffffff;
+      border-radius: 3em;
+      content: '';
+      height: 100%;
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    .button.primary {
+      background-color: #ffffff;
+      color: #4B83C0 !important;
+    }
+
+    .button.primary:after {
+      display: none;
+    }
+
+    .button:hover {
+      border-color: rgba(255, 255, 255, 0.55) !important;
+    }
+
+    .button:hover:after {
+      opacity: 0.05;
+      transform: scale(1);
+    }
+
+    /* Main Content Styles */
+    .hero {
+      text-align: center;
+      padding: 4em 2em;
+      background: linear-gradient(to bottom, #4B83C0, #3862E0);
+    }
+
+    .hero h1 {
+      font-size: 3em;
+      color: #ffffff;
+      margin-bottom: 0.5em;
+      font-weight: bold;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      max-width: 800px;
+      margin: 0 auto;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Policy Sections */
+    .policy-container {
+      max-width: 1200px;
+      margin: 2em auto;
+      padding: 0 2em;
+    }
+
+    .policy-section {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      margin-bottom: 2em;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .policy-header {
+      padding: 1.5em 2em;
+      background: rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s ease;
+    }
+
+    .policy-header:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .policy-header h2 {
+      color: #ffffff;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    .policy-header i {
+      transition: transform 0.3s ease;
+    }
+
+    .policy-content {
+      padding: 0 2em;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .policy-content.active {
+      padding: 2em;
+      max-height: 1000px;
+    }
+
+    .policy-list {
+      margin-top: 1em;
+    }
+
+    .policy-item {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 1.5em;
+      margin-bottom: 1em;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .policy-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .policy-item h3 {
+      color: #ffffff;
+      font-size: 1.2em;
+      margin-bottom: 0.5em;
+      font-weight: bold;
+    }
+
+    .policy-item p {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 1em;
+    }
+
+    .policy-actions {
+      display: flex;
+      gap: 1em;
+      margin-top: 1em;
+    }
+
+    .policy-btn {
+      padding: 0.8em 1.5em;
+      border-radius: 3em;
+      border: none;
+      cursor: pointer;
+      font-size: 0.8em;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.3s ease;
+    }
+
+    .view-btn {
+      background: rgba(255, 255, 255, 0.9);
+      color: #4B83C0;
+    }
+
+    .view-btn:hover {
+      background: #ffffff;
+    }
+
+    .sign-btn {
+      background: rgba(76, 175, 80, 0.8);
+      color: #ffffff;
+    }
+
+    .sign-btn:hover {
+      background: rgba(76, 175, 80, 1);
+    }
+
+    /* Form Styles */
+    .policy-form {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+      margin-top: 1em;
+    }
+
+    .policy-form label {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .policy-form input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #070707dd;
+      padding: 3em 2em;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 3em;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .copyright {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9em;
+      margin-top: 2em;
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 980px) {
+      .policy-container {
+        padding: 0 1em;
+      }
+    }
+
+    @media screen and (max-width: 736px) {
+      #header {
+        flex-direction: column;
+        padding: 1em;
+      }
+      
+      nav {
+        margin: 1em 0;
+      }
+      
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .header-buttons {
+        margin-top: 1em;
+      }
+      
+      .hero {
+        padding: 3em 1em;
+      }
+      
+      .hero h1 {
+        font-size: 2em;
+      }
+      
+      .policy-header {
+        padding: 1em;
+      }
+      
+      .policy-content.active {
+        padding: 1em;
+      }
+      
+      .policy-actions {
+        flex-direction: column;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .button {
+        padding: 0 1.5em;
+        font-size: 0.6em;
+      }
+      
+      .policy-btn {
+        padding: 0.8em 1em;
+        font-size: 0.7em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="logo">AAIC</div>
+    <nav>
+      <ul>
+        <li><a href="https://script.google.com/macros/s/AKfycbw-1c5qyR-BcmYqdZUzVy95mDj3_VcswNBVDQsxpoDkQH_HOR52X2O0RsiQeLSdAenGuQ/exec" >Clocking</a></li>
+        <li><a href="forms.html">Forms</a></li>
+        <li><a href="resources.html">Induction</a></li>
+        <li><a href="pandp.html">Policy and Procedures</a></li>
+        <li><a href="messageboard.html">Message Board</a></li>
+        <li><a href="#eLearging">e-Learning</a></li>
+        <li><a href="#about">About Us</a></li>
+      </ul>
+    </nav>
+    <div class="header-buttons">
+      <a href="login.html" class="button">Login</a>
+      <a href="inbox.html" class="button primary">Inbox</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Policies And Procedures</h1>
+    <p>Read the procedure management and confirm it by signing it off once you finish</p>
+  </section>
+
+  <div class="policy-container">
+    <section class="policy-section">
+      <div class="policy-header" onclick="toggleSection(this)">
+        <h2>Mandatory Policies</h2>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="policy-content">
+        <p>These policies are mandatory for all employees and volunteers to read and acknowledge.</p>
+        <div class="policy-list">
+          <div class="policy-item">
+            <h3>Consent to Discuss/Provide Information Form</h3>
+            <p>This form outlines the consent requirements for discussing and providing information within the organization.</p>
+            <div class="policy-actions">
+              <button class="policy-btn view-btn" onclick="openConsenttoDiscussProvideInformationForm()">View Document</button>
+              <div class="policy-form">
+                <label>
+                  <input type="checkbox" name="consent_read"> Mark as Read
+                </label>
+                <button class="policy-btn sign-btn" onclick="window.open('https://script.google.com/macros/s/AKfycbyjwfqY3JgtDAJK692NUuVURR0tiCKabmcJs6o1GIrAiLn5pm_WCBPiJG9gAYks4ZJMbw/exec', '_blank')">Sign Here</button>
+              </div>
+            </div>
+          </div>
+          <div class="policy-item">
+            <h3>Volunteer Handbook</h3>
+            <p>Comprehensive guide for all volunteers covering organizational policies and expectations.</p>
+            <div class="policy-actions">
+              <button class="policy-btn view-btn" onclick="window.open('aaic-volunteer-handbook.pdf', '_blank')">View Document</button>
+              <div class="policy-form">
+                <label>
+                  <input type="checkbox" name="handbook_read"> Mark as Read
+                </label>
+              <button class="policy-btn sign-btn" onclick="window.open('https://script.google.com/macros/s/AKfycbyjwfqY3JgtDAJK692NUuVURR0tiCKabmcJs6o1GIrAiLn5pm_WCBPiJG9gAYks4ZJMbw/exec', '_blank')">Sign Here</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="policy-section">
+      <div class="policy-header" onclick="toggleSection(this)">
+        <h2>Workshop Policies</h2>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="policy-content">
+        <p>Policies and procedures related to various workshop activities.</p>
+        <div class="policy-list">
+          <div class="policy-item">
+            <h3>School Workshop Manual</h3>
+            <p><b>Job Details:</b> Education, Schools and Workshop Coordinator</p>
+            <p><b>Responsibilities involve:</b> Operational Management,
+              People and Stakeholder Management
+              Scheduling Administration and
+              Project Management</p>
+            <p>Guidelines and procedures for conducting school workshops.</p>
+            <div class="policy-actions">
+              <button class="policy-btn view-btn" onclick="openSchoolWorkshopManual()">View Document</button>
+              <div class="policy-form">
+                <label>
+                  <input type="checkbox" name="school_workshop_read"> Mark as Read
+                </label>
+              <button class="policy-btn sign-btn" onclick="window.open('https://script.google.com/macros/s/AKfycbyjwfqY3JgtDAJK692NUuVURR0tiCKabmcJs6o1GIrAiLn5pm_WCBPiJG9gAYks4ZJMbw/exec', '_blank')">Sign Here</button>
+              </div>
+            </div>
+          </div>
+          <div class="policy-item">
+            <h3>Business Workshop Procedure Manual</h3>
+            <p><b>Job Details:</b> Business Development Manager</p>
+            <p><b>Responsibilities involve:</b> Leadership, Operation Stategy Management and Service Quality Perfomance</p>
+            <p>Procedures for organizing and conducting business workshops.</p>
+            <div class="policy-actions">
+              <button class="policy-btn view-btn" onclick="openBusinessManual()">View Document</button>
+              <div class="policy-form">
+                <label>
+                  <input type="checkbox" name="business_workshop_read"> Mark as Read
+                </label>
+                <button class="policy-btn sign-btn" onclick="window.open('https://script.google.com/macros/s/AKfycbyjwfqY3JgtDAJK692NUuVURR0tiCKabmcJs6o1GIrAiLn5pm_WCBPiJG9gAYks4ZJMbw/exec', '_blank')">Sign Here</button>
+              </div>
+            </div>
+          </div>
+          <div class="policy-item">
+            <h3>Social Media Marketing Workshop Procedure Manual</h3>
+            <p><b>Job Details:</b> Social Media and Marketing</p>
+            <p><b>Responsibilities involve:</b>Operational Management, People and Stakeholder Management, Scheduling Administration, Project Management</p>
+            <br>
+            <p><b>Job Details:</b> Social Media and Coordinator</p>
+            <p><b>Responsibilities involve:</b>Drive social media, content, campaigns and engagement management, analytics, and audience reach.</p>
+            
+            <p>Guidelines for social media marketing workshops.</p>
+            <div class="policy-actions">
+              <button class="policy-btn view-btn" onclick="openMarketingManual()">View Document</button>
+              <div class="policy-form">
+                <label>
+                  <input type="checkbox" name="marketing_workshop_read"> Mark as Read
+                </label>
+               <button class="policy-btn sign-btn" onclick="window.open('https://script.google.com/macros/s/AKfycbyjwfqY3JgtDAJK692NUuVURR0tiCKabmcJs6o1GIrAiLn5pm_WCBPiJG9gAYks4ZJMbw/exec', '_blank')">Sign Here</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="policy-section">
+      <div class="policy-header" onclick="toggleSection(this)">
+        <h2>Operational Policies</h2>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="policy-content">
+        <p>Policies governing day-to-day operations and facilities.</p>
+        <div class="policy-list">
+          <div class="policy-item">
+            <h3>Op Shop Manual</h3>
+            <p><b>Job Details:</b> Op Shop Manager</p>
+            <p><b>Responsibilities involve:</b>Leadership,Operational Strategy and Management,Service Quality Performance,People and Stakeholder Management,Program Management</p>
+
+            <p>Procedures for operating the organization's opportunity shop.</p>
+            <div class="policy-actions">
+              <button class="policy-btn view-btn" onclick="openOpShopManual()">View Document</button>
+              <div class="policy-form">
+                <label>
+                  <input type="checkbox" name="opshop_read"> Mark as Read
+                </label>
+                <button class="policy-btn sign-btn" onclick="window.open('https://script.google.com/macros/s/AKfycbyjwfqY3JgtDAJK692NUuVURR0tiCKabmcJs6o1GIrAiLn5pm_WCBPiJG9gAYks4ZJMbw/exec', '_blank')">Sign Here</button>
+              </div>
+            </div>
+          </div>
+          <div class="policy-item">
+            <h3>Ebenezer House Manual</h3>
+            <p><b>Job Details:</b> Admin Officer</p>
+            <p><b>Responsibilities involve:</b>Administration for the Ebenezer House and Liaising with associated organisations to promote Ebenezer House</p>
+            <br>
+            <p><b>Job Details:</b> House Supervisor</p>
+            <p><b>Responsibilities involve:</b>Operational Management, People and Stakeholder Management and Resident Management</p>
+
+            
+            <p>Guidelines for operations at Ebenezer House facility.</p>
+            <div class="policy-actions">
+              <button class="policy-btn view-btn" onclick="openEbenezerManual()">View Document</button>
+              <div class="policy-form">
+                <label>
+                  <input type="checkbox" name="ebenezer_read"> Mark as Read
+                </label>
+                <button class="policy-btn sign-btn" onclick="window.open('https://script.google.com/macros/s/AKfycbyjwfqY3JgtDAJK692NUuVURR0tiCKabmcJs6o1GIrAiLn5pm_WCBPiJG9gAYks4ZJMbw/exec', '_blank')">Sign Here</button>
+              </div>
+            </div>
+          </div>
+          <div class="policy-item">
+            <h3>Coffee Cart Manual</h3>
+            <p>Procedures for operating the coffee cart service.</p>
+            <div class="policy-actions">
+              <button class="policy-btn view-btn" onclick="openCoffeeCartManual()">View Document</button>
+              <div class="policy-form">
+                <label>
+                  <input type="checkbox" name="coffeecart_read"> Mark as Read
+                </label>
+                <button class="policy-btn sign-btn" onclick="window.open('https://script.google.com/macros/s/AKfycbyjwfqY3JgtDAJK692NUuVURR0tiCKabmcJs6o1GIrAiLn5pm_WCBPiJG9gAYks4ZJMbw/exec', '_blank')">Sign Here</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="policy-section">
+      <div class="policy-header" onclick="toggleSection(this)">
+        <h2>Program Policies</h2>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="policy-content">
+        <p>Policies related to specific programs and initiatives.</p>
+        <div class="policy-list">
+          <div class="policy-item">
+            <h3>Grants Manual</h3>
+            <p><b>Job Details:</b> Grants Coordinator</p>
+            <p><b>Responsibilities involve:</b>Research, prepare, and submit grant applications; support funding and reporting.</p>
+            <br>
+            <p><b>Job Details:</b> Grants Manager</p>
+            <p><b>Responsibilities involve:</b>Leadership,Operational Strategy and Management,Service Quality Performance,People and Stakeholder Management and Program Management</p>
+
+            <p>Procedures for applying for and managing grants.</p>
+            <div class="policy-actions">
+              <button class="policy-btn view-btn" onclick="openGrantsManual()">View Document</button>
+              <div class="policy-form">
+                <label>
+                  <input type="checkbox" name="grants_read"> Mark as Read
+                </label>
+                <button class="policy-btn sign-btn" onclick="window.open('https://script.google.com/macros/s/AKfycbyjwfqY3JgtDAJK692NUuVURR0tiCKabmcJs6o1GIrAiLn5pm_WCBPiJG9gAYks4ZJMbw/exec', '_blank')">Sign Here</button>
+              </div>
+            </div>
+          </div>
+          <div class="policy-item">
+            <h3>Outreach Manual</h3>
+            <p>Guidelines for community outreach programs.</p>
+            <div class="policy-actions">
+              <button class="policy-btn view-btn" onclick="openOutreachManual()">View Document</button>
+              <div class="policy-form">
+                <label>
+                  <input type="checkbox" name="outreach_read"> Mark as Read
+                </label>
+                <button class="policy-btn sign-btn" onclick="window.open('https://script.google.com/macros/s/AKfycbyjwfqY3JgtDAJK692NUuVURR0tiCKabmcJs6o1GIrAiLn5pm_WCBPiJG9gAYks4ZJMbw/exec', '_blank')">Sign Here</button>
+
+              </div>
+            </div>
+          </div>
+          <div class="policy-item">
+            <h3>Events Manual</h3>
+            <p><b>Job Details:</b>Events & Media Manager</p>
+            <p><b>Responsibilities involve:</b>Leadership,Operational Strategy and Management,Service Quality Performance,People and Stakeholder Management and Program Management</p>
+
+            <p>Procedures for organizing and managing events.</p>
+            <div class="policy-actions">
+              <button class="policy-btn view-btn" onclick="openEventsManual()">View Document</button>
+              <div class="policy-form">
+                <label>
+                  <input type="checkbox" name="events_read"> Mark as Read
+                </label>
+                <button class="policy-btn sign-btn" onclick="window.open('https://script.google.com/macros/s/AKfycbyjwfqY3JgtDAJK692NUuVURR0tiCKabmcJs6o1GIrAiLn5pm_WCBPiJG9gAYks4ZJMbw/exec', '_blank')">Sign Here</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="logo">AAIC</div>
+      <p>Policy and Procedures Management System</p>
+      <div class="copyright">
+        &copy; 2025 AAIC. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Toggle policy sections
+    function toggleSection(header) {
+      const content = header.nextElementSibling;
+      const icon = header.querySelector('i');
+      
+      content.classList.toggle('active');
+      icon.classList.toggle('fa-chevron-down');
+      icon.classList.toggle('fa-chevron-up');
+    }
+
+    // Open document functions
+    function openConsenttoDiscussProvideInformationForm() {
+      window.open("consent-to-discuss-provide-information-form.pdf", "_blank");
+    }
+
+    function openSchoolWorkshopManual() {
+      window.open("school-manual.docx", "_blank");
+    }
+
+    function openBusinessManual() {
+      window.open("business-workshops-manual.docx", "_blank");
+    }
+
+    function openMarketingManual() {
+      window.open("socialmedia-marketing-manual.docx", "_blank");
+    }
+
+    function openOpShopManual() {
+      window.open("opshop-manual.docx", "_blank");
+    }
+
+    function openEbenezerManual() {
+      window.open("ebenezerhouse-manual.docx", "_blank");
+    }
+
+    function openGrantsManual() {
+      window.open("grants-manual.docx", "_blank");
+    }
+
+    function openOutreachManual() {
+      window.open("outreach-manual.docx", "_blank");
+    }
+
+    function openEventsManual() {
+      window.open("events-manual.docx", "_blank");
+    }
+
+    function openCoffeeCartManual() {
+      window.open("coffeecart-manual.docx", "_blank");
+    }
+
+    // Navigation active state
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('nav a');
+      
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          navLinks.forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+    });
+  </script>
+
+  <div class="inbox">
+    <a href="beatrix67.html" class="back-button">⬅ Back to Main Page</a>
+    <div id="messageList"></div>
+  </div>
+</body>
+</html>
+

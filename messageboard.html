@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title> AAIC-Message Board</title>
+  <meta name="description" content="Collaborate with your team">
+  <meta name="author" content="Gregry Pike">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* CSS Reset and Base Styles */
+    html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      font: inherit;
+      vertical-align: baseline;
+    }
+
+    article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+      display: block;
+    }
+
+    body {
+      line-height: 1;
+      background: #4B83C0;
+      font-family: 'Arial', sans-serif;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    ol, ul {
+      list-style: none;
+    }
+
+    blockquote, q {
+      quotes: none;
+    }
+
+    blockquote:before, blockquote:after, q:before, q:after {
+      content: '';
+      content: none;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    /* Custom Styles */
+    body {
+      -webkit-text-size-adjust: none;
+      line-height: 1.75;
+      font-size: 16.5pt;
+    }
+
+    @media screen and (max-width: 1680px) {
+      body {
+        font-size: 13pt;
+      }
+    }
+
+    @media screen and (max-width: 1280px) {
+      body {
+        font-size: 12pt;
+      }
+    }
+
+    @media screen and (max-width: 360px) {
+      body {
+        font-size: 11pt;
+      }
+    }
+
+    a {
+      transition: color 0.2s ease, border-bottom-color 0.2s ease;
+      border-bottom: dotted 1px rgba(255, 255, 255, 0.35);
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      border-bottom-color: transparent;
+      color: #ffffff;
+    }
+
+    strong, b {
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    /* Header Styles */
+    #header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #5899E0;
+      padding: 1.2em 2em;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.5em;
+    }
+
+    nav a {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.8em;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-bottom: none;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover, nav a.active {
+      color: #ffffff;
+    }
+
+    .header-buttons {
+      display: flex;
+      gap: 1em;
+    }
+
+    /* Button Styles */
+    .button {
+      appearance: none;
+      transition: border-color 0.2s ease;
+      background-color: transparent;
+      border: solid 1px rgba(255, 255, 255, 0.15) !important;
+      border-radius: 3em;
+      color: #ffffff !important;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 0.7em;
+      font-weight: bold;
+      height: 3.5em;
+      letter-spacing: 0.1em;
+      line-height: 3.5em;
+      outline: 0;
+      padding: 0 2em;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .button:after {
+      transform: scale(0.25);
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      background: #ffffff;
+      border-radius: 3em;
+      content: '';
+      height: 100%;
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    .button.primary {
+      background-color: #ffffff;
+      color: #4B83C0 !important;
+    }
+
+    .button.primary:after {
+      display: none;
+    }
+
+    .button:hover {
+      border-color: rgba(255, 255, 255, 0.55) !important;
+    }
+
+    .button:hover:after {
+      opacity: 0.05;
+      transform: scale(1);
+    }
+
+    /* Message Board Styles */
+    .board {
+      max-width: 800px;
+      margin: 2em auto;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2em;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .board h2 {
+      text-align: center;
+      color: #ffffff;
+      font-size: 2em;
+      margin-bottom: 1em;
+      font-weight: bold;
+    }
+
+    #usernameInput, #messageInput {
+      width: 100%;
+      padding: 1em;
+      margin-top: 1em;
+      border-radius: 5px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      box-sizing: border-box;
+    }
+
+    #messageInput {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    #usernameInput::placeholder, #messageInput::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .button-group {
+      display: flex;
+      gap: 1em;
+      margin-top: 1.5em;
+    }
+
+    #postBtn, #clearBtn {
+      flex: 1;
+      padding: 0 2em;
+      height: 3.5em;
+      line-height: 3.5em;
+      border: none;
+      border-radius: 3em;
+      cursor: pointer;
+      font-size: 0.7em;
+      font-weight: bold;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    #postBtn {
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #4B83C0;
+    }
+
+    #postBtn:hover {
+      background-color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    #clearBtn {
+      background-color: rgba(220, 53, 69, 0.8);
+      color: #ffffff;
+    }
+
+    #clearBtn:hover {
+      background-color: rgba(220, 53, 69, 1);
+      transform: translateY(-2px);
+    }
+
+    .message {
+      background-color: rgba(255, 255, 255, 0.1);
+      margin-top: 1.5em;
+      padding: 1.5em;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .message:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .username {
+      font-weight: bold;
+      color: #ffffff;
+      margin-bottom: 0.5em;
+      font-size: 1.1em;
+    }
+
+    .message-content {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.5;
+    }
+
+    .timestamp {
+      font-size: 0.8em;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 0.5em;
+      text-align: right;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #070707dd;
+      padding: 3em 2em;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 3em;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .copyright {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9em;
+      margin-top: 2em;
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 980px) {
+      .board {
+        margin: 2em;
+        padding: 1.5em;
+      }
+    }
+
+    @media screen and (max-width: 736px) {
+      #header {
+        flex-direction: column;
+        padding: 1em;
+      }
+      
+      nav {
+        margin: 1em 0;
+      }
+      
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .header-buttons {
+        margin-top: 1em;
+      }
+      
+      .board {
+        margin: 1em;
+        padding: 1em;
+      }
+      
+      .board h2 {
+        font-size: 1.5em;
+      }
+      
+      .button-group {
+        flex-direction: column;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .button {
+        padding: 0 1.5em;
+        font-size: 0.6em;
+      }
+      
+      #postBtn, #clearBtn {
+        padding: 0 1.5em;
+        font-size: 0.6em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="logo">AAIC</div>
+    <nav>
+      <ul>
+        <li><a href="https://script.google.com/macros/s/AKfycbw-1c5qyR-BcmYqdZUzVy95mDj3_VcswNBVDQsxpoDkQH_HOR52X2O0RsiQeLSdAenGuQ/exec" >Clocking</a></li>
+        <li><a href="forms.html">Forms</a></li>
+        <li><a href="resources.html">Induction</a></li>
+        <li><a href="pandp.html">Policy and Procedures</a></li>
+        <li><a href="messageboard.html" class="active">Message Board</a></li>
+        <li><a href="#eLearging">e-Learning</a></li>
+        <li><a href="#about">About Us</a></li>
+      </ul>
+    </nav>
+    <div class="header-buttons">
+      <a href="login.html" class="button">Login</a>
+      <a href="inbox.html" class="button primary">Inbox</a>
+    </div>
+  </header>
+
+  <div class="board">
+    <h2> Message Board</h2>
+    <input id="usernameInput" type="text" placeholder="Enter your name..." />
+    <textarea id="messageInput" placeholder="Enter your message to send" rows="3"></textarea>
+    
+    <div class="button-group">
+      <button id="postBtn" class="primary">Post Message</button>
+      <button id="clearBtn">Clear Messages</button>
+    </div>
+
+    <div id="messageList"></div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="logo">AAIC<span>Workspace</span></div>
+      <p>Your all-in-one workplace solution</p>
+      <div class="copyright">
+        &copy; All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const postBtn = document.getElementById('postBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const usernameInput = document.getElementById('usernameInput');
+    const messageInput = document.getElementById('messageInput');
+    const messageList = document.getElementById('messageList');
+
+    // Load saved messages from localStorage
+    window.onload = function() {
+      const messages = JSON.parse(localStorage.getItem('messages')) || [];
+      // Add messages in the order they were saved (newest at the bottom)
+      messages.forEach(msg => addMessage(msg.username, msg.text, msg.timestamp));
+    };
+
+    // Post a new message
+    postBtn.onclick = function() {
+      const username = usernameInput.value.trim() || "Anonymous";
+      const msg = messageInput.value.trim();
+      if (msg) {
+        const timestamp = new Date().toLocaleString();
+        addMessage(username, msg, timestamp);
+        saveMessage(username, msg, timestamp);
+        messageInput.value = '';
+      }
+    };
+
+    // Clear all messages
+    clearBtn.onclick = function() {
+      if (confirm("Are you sure you want to clear all messages?")) {
+        localStorage.removeItem('messages');
+        messageList.innerHTML = '';
+      }
+    };
+
+    function addMessage(username, text, timestamp) {
+      const div = document.createElement('div');
+      div.className = 'message';
+
+      const userDiv = document.createElement('div');
+      userDiv.className = 'username';
+      userDiv.textContent = username;
+
+      const msgDiv = document.createElement('div');
+      msgDiv.className = 'message-content';
+      msgDiv.textContent = text;
+
+      const timeDiv = document.createElement('div');
+      timeDiv.className = 'timestamp';
+      timeDiv.textContent = timestamp || new Date().toLocaleString();
+
+      div.appendChild(userDiv);
+      div.appendChild(msgDiv);
+      div.appendChild(timeDiv);
+
+      // Append new messages at the end (bottom) of the message list
+      messageList.appendChild(div);
+      
+      // Scroll to the new message
+      div.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function saveMessage(username, msg, timestamp) {
+      const messages = JSON.parse(localStorage.getItem('messages')) || [];
+      messages.push({ username, text: msg, timestamp: timestamp || new Date().toLocaleString() });
+      localStorage.setItem('messages', JSON.stringify(messages));
+    }
+  </script>
+</body>
+</html>

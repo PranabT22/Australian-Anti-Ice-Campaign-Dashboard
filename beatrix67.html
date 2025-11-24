@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Bitrix67 — Your Ultimate Workplace</title>
+  <meta name="description" content="All your work tools integrated in one platform">
+  <meta name="author" content="Gregry Pike">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Your existing CSS remains the same */
+    /* CSS Reset and Base Styles */
+    html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      font: inherit;
+      vertical-align: baseline;
+    }
+
+    article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+      display: block;
+    }
+
+    body {
+      line-height: 1;
+      background: #4B83C0;
+      font-family: 'Arial', sans-serif;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    ol, ul {
+      list-style: none;
+    }
+
+    blockquote, q {
+      quotes: none;
+    }
+
+    blockquote:before, blockquote:after, q:before, q:after {
+      content: '';
+      content: none;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    /* Custom Styles */
+    body {
+      -webkit-text-size-adjust: none;
+      line-height: 1.75;
+      font-size: 16.5pt;
+    }
+
+    @media screen and (max-width: 1680px) {
+      body {
+        font-size: 13pt;
+      }
+    }
+
+    @media screen and (max-width: 1280px) {
+      body {
+        font-size: 12pt;
+      }
+    }
+
+    @media screen and (max-width: 360px) {
+      body {
+        font-size: 11pt;
+      }
+    }
+
+    a {
+      transition: color 0.2s ease, border-bottom-color 0.2s ease;
+      border-bottom: dotted 1px rgba(255, 255, 255, 0.35);
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      border-bottom-color: transparent;
+      color: #ffffff;
+    }
+
+    strong, b {
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    /* Header Styles */
+    #header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #5899E0;
+      padding: 1.2em 2em;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.5em;
+    }
+
+    nav a {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.8em;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-bottom: none;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover, nav a.active {
+      color: #ffffff;
+    }
+
+    .header-buttons {
+      display: flex;
+      gap: 1em;
+    }
+
+    /* Button Styles */
+    .button {
+      appearance: none;
+      transition: border-color 0.2s ease;
+      background-color: transparent;
+      border: solid 1px rgba(255, 255, 255, 0.15) !important;
+      border-radius: 3em;
+      color: #ffffff !important;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 0.7em;
+      font-weight: bold;
+      height: 3.5em;
+      letter-spacing: 0.1em;
+      line-height: 3.5em;
+      outline: 0;
+      padding: 0 2em;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .button:after {
+      transform: scale(0.25);
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      background: #ffffff;
+      border-radius: 3em;
+      content: '';
+      height: 100%;
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    .button.primary {
+      background-color: #ffffff;
+      color: #4B83C0 !important;
+    }
+
+    .button.primary:after {
+      display: none;
+    }
+
+    .button:hover {
+      border-color: rgba(255, 255, 255, 0.55) !important;
+    }
+
+    .button:hover:after {
+      opacity: 0.05;
+      transform: scale(1);
+    }
+
+    /* Filter Buttons */
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1em;
+      margin-bottom: 2em;
+      flex-wrap: wrap;
+    }
+
+    .filter-button {
+      padding: 0.8em 1.5em;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 3em;
+      color: #ffffff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filter-button:hover, .filter-button.active {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 6em 2em;
+      background: linear-gradient(to bottom,#4B83C0);
+    }
+
+    .hero h1 {
+      font-size: 3.5em;
+      color: #ffffff;
+      margin-bottom: 0.5em;
+      font-weight: bold;
+    }
+
+    .hero p {
+      font-size: 1.5em;
+      max-width: 800px;
+      margin: 0 auto 2em;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Apps Grid */
+    .apps-section {
+      padding: 5em 2em;
+      background-color: #3862E0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3em;
+    }
+
+    .section-header h2 {
+      font-size: 2.5em;
+      color: #ffffff;
+      margin-bottom: 0.5em;
+      position: relative;
+      padding-bottom: 0.5em;
+    }
+
+    .section-header h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(to right, rgb(254, 255, 255));
+      border-radius: 2px;
+    }
+
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 2.5em;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .app-item {
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .app-item:hover {
+      transform: translateY(-10px);
+    }
+
+    .app-icon {
+      width: 100px;
+      height: 100px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1em;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+    }
+
+    .app-item:hover .app-icon {
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .app-icon img {
+      width: 60%;
+      height: 60%;
+      object-fit: contain;
+    }
+
+    .app-name {
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #070707dd;
+      padding: 3em 2em;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .copyright {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9em;
+      margin-top: 2em;
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 980px) {
+      .hero h1 {
+        font-size: 2.5em;
+      }
+      
+      .hero p {
+        font-size: 1.2em;
+      }
+      
+      nav ul {
+        gap: 1em;
+      }
+    }
+
+    @media screen and (max-width: 736px) {
+      #header {
+        flex-direction: column;
+        padding: 1em;
+      }
+      
+      nav {
+        margin: 1em 0;
+      }
+      
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .header-buttons {
+        margin-top: 1em;
+      }
+      
+      .hero {
+        padding: 4em 1em;
+      }
+      
+      .hero h1 {
+        font-size: 2em;
+      }
+      
+      .apps-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 1.5em;
+      }
+      
+      .filter-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .button {
+        padding: 0 1.5em;
+        font-size: 0.6em;
+      }
+      
+      .apps-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="logo">AAIC<span></div>
+    <nav>
+      <ul>
+        <li><a href="https://script.google.com/macros/s/AKfycbw-1c5qyR-BcmYqdZUzVy95mDj3_VcswNBVDQsxpoDkQH_HOR52X2O0RsiQeLSdAenGuQ/exec" >Clocking</a></li>
+        <li><a href="forms.html">Forms</a></li>
+        <li><a href="resources.html">Induction</a></li>
+        <li><a href="pandp.html">Policy and Procedures</a></li>
+        <li><a href="messageboard.html">Message Board</a></li>
+        <li><a href="elearning.html">e-Learning</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="https://www.ndis.gov.au/">NDIS</a></li>
+        <li><a href="https://docs.google.com/spreadsheets/d/1zEt8qKdc7YhyULePpQMMjhfNKZ4lVsL1TAZTKFxofTg/edit?usp=sharing">Calender</a></li>
+        <li><a href="#SPR">SPR</a></li>
+        <li><a href="https://australianantiicecampaign.org.au/about-us/about-aaic.html">About Us</a></li>
+      </ul>
+    </nav>
+    <div class="header-buttons">
+      <a href= "login.html" class="button">Login</a>
+      <a href="inbox.html" class="button primary">Inbox</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Your Ultimate Workplace</h1>
+    <p>All your work tools integrated in one powerful platform. Streamline your workflow and boost productivity.</p>
+    <a href="#signup" class="button primary">Get Started Now</a>
+  </section>
+
+  <section class="apps-section">
+    <div class="section-header">
+      <h2>Integrated Applications</h2>
+      <p>Connect all your favorite tools in one place</p>
+    </div>
+    
+    <div class="filter-buttons">
+      <button class="filter-button active" data-category="all">All Apps</button>
+      <button class="filter-button" data-category="tasks">Tasks and Projects</button>
+      <button class="filter-button" data-category="collaboration">Collaboration</button>
+      <button class="filter-button" data-category="hr">HR & Automation</button>
+      <button class="filter-button" data-category="crm">Customer Relation Management</button>
+      <button class="filter-button" data-category="sites">Sites And Stores</button>
+      <button class="filter-button" data-category="vol">Volunteering</button>
+    </div>
+
+      <div class="apps-grid">
+      <div class="app-item" data-categories="vol">
+        <a href="https://www.fireflyinitiative.xyz/">
+          <div class="app-icon">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyRA9viv10lAl-R1TDJl6YsuXa4qnnoAAKPw&s.png" alt="Firefly">
+          </div>
+          <div class="app-name">Firefly Initiative</div>
+        </a>
+      </div>
+      
+      <div class="app-item" data-categories="tasks">
+        <a href="https://app.asana.com/-/login">
+          <div class="app-icon">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScD1nIKyMQn9x7WWbGxQqVk31VJ5Vb5YFnwg&s.png" alt="Asana">
+          </div>
+          <div class="app-name">Asana</div>
+        </a>
+      </div> 
+      
+      <div class="app-item" data-categories="tasks">
+        <a href="https://www.microsoft.com/en-us/microsoft-365/download-office">
+          <div class="app-icon">
+            <img src="https://tse2.mm.bing.net/th/id/OIP.PWoq1WvDQDxc_MPv4Jt0GwHaHa?cb=ucfimg2ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3.png" alt="Microsoft">
+          </div>
+          <div class="app-name">Microsoft Installer</div>
+        </a>
+      </div> 
+
+       <div class="app-item" data-categories="tasks">
+        <a href="https://www.bing.com/ck/a?!&&p=8e56a9087f4e57874379f835ceb0ad7a291227ccaa243110d44781e4e4c440fbJmltdHM9MTc2Mjk5MjAwMA&ptn=3&ver=2&hsh=4&fclid=1e5be95f-5c24-6d92-39e0-fab15d346ca7&psq=gmail&u=a1aHR0cHM6Ly9tYWlsLmdvb2dsZS5jb20vbWFpbD9obD1lbg">
+          <div class="app-icon">
+            <img src="https://static.vecteezy.com/system/resources/previews/022/484/508/non_2x/google-mail-gmail-icon-logo-symbol-free-png.png" alt="Gmail">
+          </div>
+          <div class="app-name">Gmail</div>
+        </a>
+      </div> 
+
+      <div class="app-item" data-categories="collaboration">
+        <a href="https://mailchimp.com/">
+          <div class="app-icon">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFSwKdmgogIBQ6b8qMZ73bxABEQd4vanKv_g&s.jpg" alt="Mail Chimp">
+          </div>
+          <div class="app-name">Mail Chimp</div>
+        </a>
+      </div>
+      
+      <div class="app-item" data-categories="collaboration">
+        <a href="https://workspace.google.com/products/meet/">
+          <div class="app-icon">
+            <img src="https://cdn.creazilla.com/icons/3253847/google-meet-icon-sm.png" alt="Google Meet">
+          </div>
+          <div class="app-name">Google Meet</div>
+        </a>
+      </div>
+
+      <div class="app-item" data-categories="collaboration">
+        <a href="https://calendar.google.com/">
+          <div class="app-icon">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgJW_fHF5lATK_o4Z26kBTJAirkwAbnNwCZw&s.png" alt="Google Calender">
+          </div>
+          <div class="app-name">Google Calender</div>
+        </a>
+      </div>
+      
+      <div class="app-item" data-categories="hr">
+        <a href="https://chatgpt.com/">
+          <div class="app-icon">
+            <img src="https://static.vecteezy.com/system/resources/previews/021/059/827/non_2x/chatgpt-logo-chat-gpt-icon-on-white-background-free-vector.jpg" alt="ChatGPT">
+          </div>
+          <div class="app-name">ChatGPT</div>
+        </a>
+      </div>
+
+      <div class="app-item" data-categories="hr">
+        <a href="https://www.xero.com/au/">
+          <div class="app-icon">
+            <img src="https://assets.streamlinehq.com/image/private/w_300,h_300,ar_1/f_auto/v1/icons/logos/xero-bial37sfin9wn8yt2416an.png/xero-9comc4kh27ofubv8jogwcp.png?_a=DATAg1AAZAA0.png" alt="Xero">
+          </div>
+          <div class="app-name">Xero</div>
+        </a>
+      </div>
+
+      <div class="app-item" data-categories="hr">
+        <a href="https://www.corepluspm.com/">
+          <div class="app-icon">
+            <img src="https://tse4.mm.bing.net/th/id/OIP.stmNwEIRtfjx8dycOOuJ2gAAAA?cb=ucfimg2ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3.png" alt="Coreplus">
+          </div>
+          <div class="app-name">Coreplus</div>
+        </a>
+      </div> 
+
+<div class="app-item" data-categories="vol">
+        <a href="https://freddymatch.org/login/">
+          <div class="app-icon">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgewffVfyesUdDUirvQejKiB7lXT5LqIkfig&s.png" alt="FM">
+          </div>
+          <div class="app-name">Freedy Match</div>
+        </a>
+      </div> 
+
+<div class="app-item" data-categories="sites">
+        <a href="https://signin.ebay.com.au/signin/">
+          <div class="app-icon">
+            <img src="https://tse3.mm.bing.net/th/id/OIP.zfg5Iwsoh-gq-a-P-tvlZwHaHa?cb=ucfimg2ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3.png" alt="Ebay">
+          </div>
+          <div class="app-name">Ebay</div>
+        </a>
+      </div> 
+
+
+<div class="app-item" data-categories="sites">
+        <a href="https://www.facebook.com/groups/814552717694683/">
+          <div class="app-icon">
+            <img src="https://tse2.mm.bing.net/th/id/OIP.nUkQQ0_8y45VuyAhD5j3HgHaHa?cb=ucfimg2ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3.png" alt="CC">
+          </div>
+          <div class="app-name">Cozy Closet</div>
+        </a>
+      </div> 
+
+
+
+<div class="app-item" data-categories="tasks">
+        <a href="https://www.givit.org.au/">
+          <div class="app-icon">
+            <img src="https://tse3.mm.bing.net/th/id/OIP.9QbmT2vXSIlYXXzCsSJqhQHaGs?cb=ucfimg2ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3.png" alt="GV">
+          </div>
+          <div class="app-name">Givit</div>
+        </a>
+      </div> 
+
+
+<div class="app-item" data-categories="sites">
+        <a href="https://www.vistaprint.com.au/">
+          <div class="app-icon">
+            <img src="https://th.bing.com/th/id/OIP.yHXhzTbh_vx2d8v-scZuXAHaD4?o=7&cb=ucfimg2rm=3&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3.png" alt="VP">
+          </div>
+          <div class="app-name">Vista Print</div>
+        </a>
+      </div> 
+
+
+<div class="app-item" data-categories="sites">
+        <a href="https://www.eventbrite.com.au/">
+          <div class="app-icon">
+            <img src="https://logos-world.net/wp-content/uploads/2024/10/Eventbrite-Logo-2006.png" alt="EB">
+          </div>
+          <div class="app-name">Eventbrite</div>
+        </a>
+      </div> 
+
+      <div class="app-item" data-categories="hr">
+        <a href="https://www.smartygrants.com.au/">
+          <div class="app-icon">
+            <img src="https://ourcomm-craft.s3.amazonaws.com/media/_large/SmartyGrants-Owl.png" alt="SG">
+          </div>
+          <div class="app-name">Smarty Grants</div>
+        </a>
+      </div> 
+
+      <div class="app-item" data-categories="hr">
+        <a href="https://www.ourcommunity.com.au/login.form">
+          <div class="app-icon">
+            <img src="https://tse1.mm.bing.net/th/id/OIP.ivyjPlbQS75W2zsw70v6awHaHW?cb=ucfimg2ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3" alt="OurCommunity">
+          </div>
+          <div class="app-name">Our Community Grants</div>
+        </a>
+      </div>
+
+      <div class="app-item" data-categories="hr">
+        <a href="https://drive.google.com/drive/folders/1820O78IB5Orq5UT8FiKY2rSZHgGzM2gV?usp=drive_link">
+          <div class="app-icon">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrh9Kxpb4QpJcBXxdc_KQSp_WDzhw1FYq1jw&s.%3Csvg" alt="Xero">
+          </div>
+          <div class="app-name">Google Drive HR</div>
+        </a>
+      </div>
+      
+      <div class="app-item" data-categories="collaboration">
+        <a href="https://drive.google.com">
+          <div class="app-icon">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo4zAllHkc_J3PbAIoCa54xizTr4cNC-Tg8Q&s.png" alt="Google Drive">
+          </div>
+          <div class="app-name">Google Drive</div>
+        </a>
+      </div>
+      
+      <div class="app-item" data-categories="sites">
+        <a href="https://www.youtube.com/@australianantiicecampaign9844">
+          <div class="app-icon">
+            <img src="https://cdn3.iconfinder.com/data/icons/social-network-30/512/social-06-512.png" alt="AAIC youtube access">
+          </div>
+          <div class="app-name">AAIC Youtube Channel</div>
+        </a>
+      </div> 
+
+      <div class="app-item" data-categories="sites">
+        <a href="https://www.canva.com/">
+          <div class="app-icon">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGpJ8UFG03-e_wuIAfqnNlnVzUDZ-4Uxxwiw&s.png" alt="Canva">
+          </div>
+          <div class="app-name">Canva</div>
+        </a>
+      </div>
+
+      <div class="app-item" data-categories="collaboration">
+        <a href="https://streamyard.com/">
+          <div class="app-icon">
+            <img src="https://e7.pngegg.com/pngimages/646/564/png-clipart-streamyard-logo-tech-companies.png" alt="StreamYard">
+          </div>
+          <div class="app-name">Stream Yard</div>
+        </a>
+      </div>
+
+      <div class="app-item" data-categories="tasks">
+        <a href="https://auth.monday.com/auth/login_monday">
+          <div class="app-icon">
+            <img src="https://cdn.worldvectorlogo.com/logos/monday-1.svg" alt="Monday.com">
+          </div>
+          <div class="app-name">Monday.com</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="logo">AAIC <span>Workspace</span></div>
+      <p>Your all-in-one workplace solution</p>
+      <div class="copyright">
+        &copy;All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple script to handle navigation active state
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('nav a');
+      
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          navLinks.forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+      
+      // Filter functionality
+      const filterButtons = document.querySelectorAll('.filter-button');
+      const appItems = document.querySelectorAll('.app-item');
+      
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Remove active class from all buttons
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          const category = this.getAttribute('data-category');
+          
+          // Show/hide app items based on category
+          appItems.forEach(item => {
+            if (category === 'all') {
+              item.style.display = 'block';
+            } else {
+              const categories = item.getAttribute('data-categories');
+              if (categories.includes(category)) {
+                item.style.display = 'block';
+              } else {
+                item.style.display = 'none';
+              }
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
